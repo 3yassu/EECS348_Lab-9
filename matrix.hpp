@@ -65,8 +65,9 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const {
             matrix_return[i][j] = dot_prod;
         }
     }
-    matrix_return.print_matrix();
-    return matrix_return;
+    Matrix<T> = new_matrix(matrix_return);
+    new_matrix.print_matrix();
+    return new_matrix;
 }
 template <typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix &rhs) const {
@@ -78,8 +79,9 @@ Matrix<T> Matrix<T>::operator+(const Matrix &rhs) const {
             matrix_return[i][j] = (matrix_vector[i][j] + (rhs.get_value(i, j)));
         }
     }
-    matrix_return.print_matrix();
-    return matrix_return;
+    Matrix<T> = new_matrix(matrix_return);
+    new_matrix.print_matrix();
+    return new_matrix;
 }
 template <typename T>
 void Matrix<T>::set_value(std::size_t i, std::size_t j, T n){
