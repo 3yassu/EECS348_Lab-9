@@ -54,15 +54,15 @@ void Matrix<T>::print_matrix() const {
 }
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const {
-    Matrix<T> matrix_return(matrix_vector.size());
     int size = matrix_vector.size();
+    vector<vector<T>> matrix_return(size, vector<T>(size));
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
             T dot_prod = 0;
             for(int k = 0; k < size; k++){
                 dot_prod += matrix_vector[i][k]*rhs.get_value(k, j);
             }
-            matrix_return.set_value(i, j, dot_prod);
+            matrix_return[i][j] = dot_prod;
         }
     }
     matrix_return.print_matrix();
@@ -70,11 +70,12 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const {
 }
 template <typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix &rhs) const {
-    Matrix<T> matrix_return(matrix_vector.size());
+    int N = matrix_vector.size();
+    vector<vector<T>> matrix_return(N, vector<T>(N));
     int size = matrix_vector.size();
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            matrix_return.set_value(i, j, (matrix_vector[i][j] + (rhs.get_value(i, j))));
+            matrix_return[i][j] = (matrix_vector[i][j] + (rhs.get_value(i, j)));
         }
     }
     matrix_return.print_matrix();
@@ -84,6 +85,7 @@ template <typename T>
 void Matrix<T>::set_value(std::size_t i, std::size_t j, T n){
     std::size_t size = matrix_vector.size();
     if (i < size && j < size) {matrix_vector[i][j] = n;}
+    print_matrix();
 }
 template <typename T>
 T Matrix<T>::get_value(std::size_t i, std::size_t j) const {
