@@ -38,7 +38,7 @@ void run(pair<vector<vector<T>>, vector<vector<T>>> matrix){
  
 }
 int main() {
-    cout  << "File name por favor: ";
+    cout  << "File name please: ";
     string filename;
     cin >> filename;
     ifstream file(filename);
