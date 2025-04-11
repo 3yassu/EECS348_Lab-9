@@ -65,7 +65,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const {
             matrix_return[i][j] = dot_prod;
         }
     }
-    Matrix<T> = new_matrix(matrix_return);
+    Matrix<T> new_matrix(matrix_return);
     new_matrix.print_matrix();
     return new_matrix;
 }
@@ -79,7 +79,7 @@ Matrix<T> Matrix<T>::operator+(const Matrix &rhs) const {
             matrix_return[i][j] = (matrix_vector[i][j] + (rhs.get_value(i, j)));
         }
     }
-    Matrix<T> = new_matrix(matrix_return);
+    Matrix<T> new_matrix(matrix_return);
     new_matrix.print_matrix();
     return new_matrix;
 }
