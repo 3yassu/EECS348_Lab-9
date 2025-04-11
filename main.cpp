@@ -22,7 +22,22 @@ pair<vector<vector<T>>, vector<vector<T>>> readMatrixFromFile(int N, ifstream &f
     file.close();
     return {firstMatrix, secondMatrix};
 }
-
+template <typename T>
+void run(pair<vector<vector<T>>, vector<vector<T>>> matrix){
+        Matrix<T> bot(matrix.first);
+        Matrix<T> tob(matrix.second);
+        bot+tob;
+        bot*tob;
+        cout << "major Diagonal: ";
+        bot.sum_diagonal_major();
+        cout << "minor diagonal: ";
+        bot.sum_diagonal_minor();
+        bot.swap_cols(1, 2);
+        bot.swap_rows(1, 2);
+        bot.set_value(1, 1, 0);
+        bot.print_matrix();
+ 
+}
 int main() {
     cout  << "File name por favor: ";
     string filename;
@@ -34,34 +49,12 @@ int main() {
     int type = readLine[2] - '0';
     if(type == 0){
         pair<vector<vector<int>>, vector<vector<int>>> matrix = readMatrixFromFile<int>(n, file);
-        Matrix<int> bot(matrix.first);
-        Matrix<int> tob(matrix.second);
-        bot+tob;
-        bot*tob;
-        cout << "major Diagonal: ";
-        bot.sum_diagonal_major();
-        cout << "minor diagonal: ";
-        bot.sum_diagonal_minor();
-        bot.swap_cols(1, 2);
-        bot.swap_rows(1, 2);
-        bot.set_value(1, 1, 0);
-        bot.print_matrix();
-        return 0;
+       run(matrix);
     }
     else if(type == 1){
-        pair<vector<vector<double>>, vector<vector<double>>> matrix= readMatrixFromFile<double>(n, file);
-        Matrix<double> bot(matrix.first);
-        Matrix<double> tob(matrix.second);
-        bot+tob;
-        bot*tob;
-        cout << "major Diagonal: ";
-        bot.sum_diagonal_major();
-        cout << "minor diagonal: ";
-        bot.sum_diagonal_minor();
-        bot.swap_cols(1, 2);
-        bot.swap_rows(1, 2);
-        bot.set_value(1, 1, 0);
-        return 0;
+	    pair<vector<vector<double>>, vector<vector<double>>> matrix= readMatrixFromFile<double>(n, file);
+	run(matrix);
     }
+    return 0;
 }
 
