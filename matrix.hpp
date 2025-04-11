@@ -46,7 +46,7 @@ void Matrix<T>::print_matrix() const {
     int size = matrix_vector.size();
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            cout << (matrix_vector)[i][j] << " ";
+            cout << (matrix_vector)[i][j] << " | ";
         }
         cout << endl;
     }
