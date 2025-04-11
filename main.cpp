@@ -26,6 +26,8 @@ template <typename T>
 void run(pair<vector<vector<T>>, vector<vector<T>>> matrix){
         Matrix<T> bot(matrix.first);
         Matrix<T> tob(matrix.second);
+	bot.print_matrix();
+	tob.print_matrix();
         bot+tob;
         bot*tob;
         cout << "major Diagonal: ";
