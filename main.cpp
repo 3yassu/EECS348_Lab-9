@@ -35,7 +35,6 @@ void run(pair<vector<vector<T>>, vector<vector<T>>> matrix){
         bot.swap_cols(1, 2);
         bot.swap_rows(1, 2);
         bot.set_value(1, 1, 0);
-        bot.print_matrix();
  
 }
 int main() {
