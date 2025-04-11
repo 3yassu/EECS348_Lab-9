@@ -45,6 +45,7 @@ int main() {
         bot.swap_cols(1, 2);
         bot.swap_rows(1, 2);
         bot.set_value(1, 1, 0);
+        bot.print_matrix();
         return 0;
     }
     else if(type == 1){

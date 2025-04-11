@@ -13,11 +13,11 @@ public:
 
     Matrix operator+(const Matrix &rhs) const;
     Matrix operator*(const Matrix &rhs) const;
-    void set_value(std::size_t i, std::size_t j, int n);
-    int get_value(std::size_t i, std::size_t j) const;
+    void set_value(std::size_t i, std::size_t j, T n);
+    T get_value(std::size_t i, std::size_t j) const;
     int get_size() const;
-    int sum_diagonal_major() const;
-    int sum_diagonal_minor() const;
+    T sum_diagonal_major() const;
+    T sum_diagonal_minor() const;
     void swap_rows(std::size_t r1, std::size_t r2);
     void swap_cols(std::size_t c1, std::size_t c2);
     void print_matrix() const;
@@ -53,12 +53,12 @@ void Matrix<T>::print_matrix() const {
     cout << endl;
 }
 template <typename T>
-Matrix<T> Matrix<T>::operator*(const Matrix &rhs) const {
+Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const {
     Matrix<T> matrix_return(matrix_vector.size());
     int size = matrix_vector.size();
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            int dot_prod = 0;
+            T dot_prod = 0;
             for(int k = 0; k < size; k++){
                 dot_prod += matrix_vector[i][k]*rhs.get_value(k, j);
             }
@@ -81,12 +81,12 @@ Matrix<T> Matrix<T>::operator+(const Matrix &rhs) const {
     return matrix_return;
 }
 template <typename T>
-void Matrix<T>::set_value(std::size_t i, std::size_t j, int n){
+void Matrix<T>::set_value(std::size_t i, std::size_t j, T n){
     std::size_t size = matrix_vector.size();
     if (i < size && j < size) {matrix_vector[i][j] = n;}
 }
 template <typename T>
-int Matrix<T>::get_value(std::size_t i, std::size_t j) const {
+T Matrix<T>::get_value(std::size_t i, std::size_t j) const {
     std::size_t size = matrix_vector.size();
     if (i < size && j < size) {return (matrix_vector)[i][j];}
     else{throw out_of_range("out_of_bounds");}
@@ -96,7 +96,7 @@ int Matrix<T>::get_size() const{
     return matrix_vector.size();
 }
 template <typename T>
-int Matrix<T>::sum_diagonal_major() const{
+T Matrix<T>::sum_diagonal_major() const{
     T adder = 0; int size = matrix_vector.size();
     for(int i = 0; i < size; i++){
         adder += (matrix_vector)[i][i];
@@ -105,7 +105,7 @@ int Matrix<T>::sum_diagonal_major() const{
     return adder;
 }
 template <typename T>
-int Matrix<T>::sum_diagonal_minor() const{
+T Matrix<T>::sum_diagonal_minor() const{
     T adder = 0; int size = matrix_vector.size();
     for(int i = 0; i < size; i++){
         adder += (matrix_vector)[i][size-i-1];
